@@ -1,55 +1,75 @@
 <div align="center">
 
-# WIGTN
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-white.png">
+  <img src="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-navy.png" alt="WIGTN" width="320">
+</picture>
 
-**An independent AI engineering crew building research-grade systems for production.**
+**An independent AI team in Korea that builds for clients and publishes in the open.**
 
-Applied research at ACL, EMNLP, and NeurIPS. Open-source plugins for agent developers. Production RAG and agent systems for enterprise clients.
-
-[Website](https://TODO-WIGTN-WEBSITE) · [Tech Reports](https://TODO-WIGTN-TECH-REPORTS) · [Blog](https://harrison-kim.tistory.com)
+[Website](https://wigtn.com) · [WIG-log](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
 </div>
 
 ---
 
-## About
+WIGTN builds web products and AI systems for clients, and publishes what it learns: peer-reviewed papers, released models, and technical reports that say what they do not show.
 
-WIGTN is a five-person AI engineering crew. We come from different starting points, including construction project management, enterprise engineering, and startup AI teams, and we share one conviction: the people who build the systems should also be the people who study, publish, and open-source them. We would rather be creators than coordinators of someone else's tools.
+## What we do
 
-Our work runs as a loop. Problems we hit while shipping RAG and agent systems to real clients become research questions, the answers become papers and tech reports, and whatever is reusable goes back to the community as open-source tooling.
+### Web Agency: we build it
 
-## Research
+Websites and web products, assembled from modules we own and keep under test: a UI kit, a back office, an AI pipeline, and notifications.
 
-We publish where the field's applied and systems work gets reviewed: **ACL**, **EMNLP**, and **NeurIPS**. Our papers start from implementation. A demo system, a parsing pipeline, or an evaluation harness comes first, and the claim has to survive contact with real documents and real workloads.
+### AX Agency: we measure it
 
-Among our research, **WigtnOCR** is where we went all the way to modeling: training and evaluating our own model for document understanding rather than wrapping existing ones. Alongside it, **WIGVO** is our first-author system demonstration line of work. Full write-ups, ablations, and reproduction details live in our tech reports.
+We map where AI has leverage in your workflows and where it does not. The metric is agreed before anything is built and measured on your own data. After launch we measure again against that baseline, and whatever did not move the number gets cut.
 
-| Work | Focus | Venue |
+## Selected work
+
+| Project | What it is | Evidence | Links |
+| --- | --- | --- | --- |
+| WIGVO | Real-time Korean–English translation over ordinary phone calls. The person on the other end needs no app. | ACL 2026 System Demonstrations. 555 ms median caller-to-callee latency over 814 turns. | [Paper](https://aclanthology.org/2026.acl-demo.33/) · [Report](https://tech.wigtn.com/wigvo/) · [Code](https://github.com/wigtn/wigvo) |
+| WigtnOCR | A 2B LoRA adapter that parses Korean government documents into structured Markdown, distilled from a 30B teacher. | Hit@1 0.739 on KoGovDoc-Bench, first of six parsers on three of four retrieval metrics. | [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Benchmark](https://huggingface.co/datasets/Wigtn/KoGovDoc-Bench) · [Report](https://tech.wigtn.com/wigtnocr/) · [Code](https://github.com/wigtn/wigtnOCR-v1) |
+| WIGSS | A CLI that wraps your dev server. Drag a component on the live page and the change is written back into the source file behind it. | Published on npm under Apache-2.0. Run with `npx wigss`. | [npm](https://www.npmjs.com/package/wigss) · [Report](https://tech.wigtn.com/wigss/) · [Code](https://github.com/wigtn/wigss) |
+| WIGTN plugins | A plugin set for multi-agent software workflows in Claude Code and Codex. | Redesigned after our own evaluation found the old harness added 151.7% median wall time with no better task outcomes. | [Claude Code](https://github.com/wigtn/wigtn-plugins) · [Codex](https://github.com/wigtn/wigtn-plugins-codex) · [Report](https://tech.wigtn.com/codex-selective-harness/) |
+
+Other public projects are in [our repositories](https://github.com/wigtn?tab=repositories&type=source).
+
+## Track record
+
+### Papers
+
+- ACL 2026 System Demonstrations: *WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating*, pp. 336–344. Demonstrated live at the conference, followed by an invited talk and poster at IWSLT 2026.
+- EMNLP 2026 Industry Track: *Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance.* [Code](https://github.com/wigtn/WigtnOCR-RADP)
+- TAE workshop at NeurIPS 2026: *MDI: The Minimum Detectable Improvement of an LLM Judge.* [Code and data](https://github.com/wigtn/mdi-artifact)
+
+### Competitions
+
+- Build with TRAE Seoul (ByteDance): Grand Prize
+- Snowflake AI & Data Hackathon Korea 2026: 2nd place, Tech Track
+- OBA Weekendthon: Top 6
+
+We list only published work. Papers under review are left out until they are accepted.
+
+## Team
+
+| Name | Role | GitHub |
 | --- | --- | --- |
-| **WigtnOCR** | Document understanding, model training and evaluation | EMNLP |
-| **WIGVO** | System demonstration | ACL System Demonstrations |
+| Harrison Kim | Team Lead, AI Research Engineer | [@Hyeongseob91](https://github.com/Hyeongseob91) |
+| Diego Son | AI Research Engineer | |
+| Eric Kim | DevOps Engineer | [@moriroKim](https://github.com/moriroKim) |
+| Maximus Kim | AI Product Engineer | [@HyeonsangKim](https://github.com/HyeonsangKim) |
+| David Cho | AI Product Engineer | [@starz-woo](https://github.com/starz-woo) |
 
-## Open Source
+Partners: Mind AI · MEGA Code · Tripla · Arustay. More at [wigtn.com/team](https://wigtn.com/team).
 
-We release our tooling as open-source **plugins** that drop into existing agent and coding workflows. The goal is practical: extensions that remove friction we felt ourselves, documented well enough that a developer can adopt them in an afternoon. Browse the current set in our [repositories](https://github.com/wigtn?tab=repositories).
+## Work with us
 
-## Industry Work
+Bring us a site to build or a workflow that needs AI. You can also read one of our reports and tell us where it is wrong, try one of the models, or open an issue in any repository.
 
-WIGTN is currently embedded with **two enterprise clients**, delivering production-grade RAG and agent platforms. Client work keeps our research honest: every technique we write about has been pressure-tested against messy data, strict latency budgets, and users who do not care how elegant the architecture is. Client names are not disclosed.
-
-## Read More
-
-Our **website** is the best starting point for who we are and what we build, and our **tech reports** carry the depth: design decisions, quantitative results, failure cases, and what we would do differently.
-
-- Website: https://TODO-WIGTN-WEBSITE
-- Tech Reports: https://TODO-WIGTN-TECH-REPORTS
-
-## Collaborate
-
-If you are working on document intelligence, agent architecture, or production RAG and want to compare notes, open a Discussion or an Issue in any of our repositories, or reach us through the links above.
+Email us at [contact@wigtn.com](mailto:contact@wigtn.com).
 
 <div align="center">
-
-*Build it, publish it, repeat.*
-
+<sub>Everything we learn, we share.</sub>
 </div>
