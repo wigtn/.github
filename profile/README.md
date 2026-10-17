@@ -52,18 +52,6 @@ Other public projects are in [our repositories](https://github.com/wigtn?tab=rep
 
 We list only published work. Papers under review are left out until they are accepted.
 
-## Team
-
-| Name | Role | GitHub |
-| --- | --- | --- |
-| Harrison Kim | Team Lead, AI Research Engineer | [@Hyeongseob91](https://github.com/Hyeongseob91) |
-| Diego Son | AI Research Engineer | |
-| Eric Kim | DevOps Engineer | [@moriroKim](https://github.com/moriroKim) |
-| Maximus Kim | AI Product Engineer | [@HyeonsangKim](https://github.com/HyeonsangKim) |
-| David Cho | AI Product Engineer | [@starz-woo](https://github.com/starz-woo) |
-
-Partners: Mind AI · MEGA Code · Tripla · Arustay. More at [wigtn.com/team](https://wigtn.com/team).
-
 ## Work with us
 
 Bring us a site to build or a workflow that needs AI. You can also read one of our reports and tell us where it is wrong, try one of the models, or open an issue in any repository.
