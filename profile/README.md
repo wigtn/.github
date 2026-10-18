@@ -7,7 +7,7 @@
 
 **An independent AI team in Korea that builds for clients and publishes in the open.**
 
-[Website](https://wigtn.com) · [WIG-log](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
+[WIGTN](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
 </div>
 
@@ -40,9 +40,9 @@ Other public projects are in [our repositories](https://github.com/wigtn?tab=rep
 
 ### Papers
 
-- ACL 2026 System Demonstrations: *WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating*, pp. 336–344. Demonstrated live at the conference, followed by an invited talk and poster at IWSLT 2026.
-- EMNLP 2026 Industry Track: *Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance.* [Code](https://github.com/wigtn/WigtnOCR-RADP)
-- TAE workshop at NeurIPS 2026: *MDI: The Minimum Detectable Improvement of an LLM Judge.* [Code and data](https://github.com/wigtn/mdi-artifact)
+- ![ACL 2026](https://img.shields.io/badge/ACL%202026-5A2E97?style=flat-square) System Demonstrations: *WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating*, pp. 336–344. Demonstrated live at the conference, followed by an invited talk and poster at IWSLT 2026.
+- ![EMNLP 2026](https://img.shields.io/badge/EMNLP%202026-5A2E97?style=flat-square) Industry Track: *Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance.* [Code](https://github.com/wigtn/WigtnOCR-RADP)
+- ![NeurIPS 2026](https://img.shields.io/badge/NeurIPS%202026-5A2E97?style=flat-square) TAE workshop: *MDI: The Minimum Detectable Improvement of an LLM Judge.* [Code and data](https://github.com/wigtn/mdi-artifact)
 
 ### Competitions
 
