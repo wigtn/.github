@@ -5,68 +5,73 @@
   <img src="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-navy.png" alt="WIGTN" width="320">
 </picture>
 
-**An independent AI team in Korea that builds for clients and publishes in the open.**
+**An independent AI team that builds for clients and publishes in the open.**
 
-[WIGTN](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
+[WIGTN](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [LinkedIn](https://www.linkedin.com/company/wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
 </div>
 
 ---
 
-WIGTN builds web products and AI systems for clients, and publishes what it learns: peer-reviewed papers, released models, and technical reports that say what they do not show.
+### We learn, build, and share AI in the open.
 
-## What we do
+WIGTN builds web products and AI systems for clients, and publishes what it learns in the open: peer-reviewed papers, released models, and reports that say what they do not show.
 
-### Web Agency: we build it
+## Built on Qwen: from a 2B document parser to an EMNLP 2026 paper
 
-Websites and web products, assembled from modules we own and keep under test: a UI kit, a back office, an AI pipeline, and notifications.
+One line of work in three repositories, read in order. Its training pipeline uses only openly released Qwen models. WIGTN is an independent team, not part of the Qwen project.
 
-### AX Agency: we measure it
+### 1. Distill Qwen3-VL into a document parser · [wigtnOCR-v1](https://github.com/wigtn/wigtnOCR-v1)
 
-We map where AI has leverage in your workflows and where it does not. The metric is agreed before anything is built and measured on your own data. After launch we measure again against that baseline, and whatever did not move the number gets cut.
+Qwen3-VL-30B-A3B-Thinking wrote Markdown for 4,501 pages of Korean government documents and arXiv papers. Qwen3.5-122B-A10B scored that Markdown on five criteria, and Qwen3-VL-2B-Instruct was fine-tuned with LoRA (ms-swift, r=8) on the 2,667 pages kept. The result, [WigtnOCR-2B](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR), matches or beats its 30B teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523. The repository holds the training config, the pipeline scripts and a step-by-step LoRA guide.
 
-## Research
+### 2. A result that did not fit
 
-The first three repositories are one line of work, read in order:
+Against five other parsers, the one with the best chunk-boundary score (MinerU, BC 0.735) came fifth of six in retrieval. A score measured on a parser's output alone did not say which parser a retriever would work best with.
 
-- [wigtnOCR-v1](https://github.com/wigtn/wigtnOCR-v1): distills Qwen3-VL-30B pseudo-labels into WigtnOCR-2B, a LoRA fine-tune of Qwen3-VL-2B that parses Korean government documents into Markdown.
-- [WigtnOCR-RADP](https://github.com/wigtn/WigtnOCR-RADP): the RCPS paper (EMNLP 2026 Industry Track), which starts from WigtnOCR-2B and selects parsers by retrieval instead of by intrinsic scores, with code, the 663-question probe and results.
-- [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters): the nine LoRA adapters evaluated in the paper's parser-training study, with hashes and executed configs.
-- [mdi-artifact](https://github.com/wigtn/mdi-artifact): code and data for MDI, the minimum detectable improvement of an LLM judge (NeurIPS 2026 TAE workshop).
-- [wigvo](https://github.com/wigtn/wigvo): real-time Korean–English speech translation over phone calls (ACL 2026 System Demonstrations).
+### 3. Test it as a paper: RCPS, EMNLP 2026 Industry Track · [WigtnOCR-RADP](https://github.com/wigtn/WigtnOCR-RADP)
 
-## Selected work
+The paper takes WigtnOCR-2B as its production parser and ranks parsers by retrieval on a frozen probe of 663 question–answer pairs.
 
-| Project | What it is | Evidence | Links |
-| --- | --- | --- | --- |
-| WIGVO | Real-time Korean–English translation over ordinary phone calls. The person on the other end needs no app. | ACL 2026 System Demonstrations. 555 ms median caller-to-callee latency over 814 turns. | [Paper](https://aclanthology.org/2026.acl-demo.33/) · [Report](https://tech.wigtn.com/wigvo/) · [Code](https://github.com/wigtn/wigvo) |
-| WigtnOCR | A 2B model, LoRA-fine-tuned from Qwen3-VL-2B, that parses Korean government documents into structured Markdown, distilled from a 30B teacher. | On the EMNLP 2026 RCPS probe (663 questions, three retrievers), RCPS 0.583, level with its 30B teacher at 0.584. Hit@1 0.549 against 0.123 for table-enabled MinerU. | [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Benchmark](https://huggingface.co/datasets/Wigtn/KoGovDoc-Bench) · [Paper](https://github.com/wigtn/WigtnOCR-RADP) · [Report](https://tech.wigtn.com/wigtnocr/) · [Code](https://github.com/wigtn/wigtnOCR-v1) |
-| WIGSS | A CLI that wraps your dev server. Drag a component on the live page and the change is written back into the source file behind it. | Published on npm under Apache-2.0. Run with `npx wigss`. | [npm](https://www.npmjs.com/package/wigss) · [Report](https://tech.wigtn.com/wigss/) · [Code](https://github.com/wigtn/wigss) |
-| WIGTN plugins | A plugin set for multi-agent software workflows in Claude Code and Codex. | Redesigned after our own evaluation found the old harness added 151.7% median wall time with no better task outcomes. | [Claude Code](https://github.com/wigtn/wigtn-plugins) · [Codex](https://github.com/wigtn/wigtn-plugins-codex) · [Report](https://tech.wigtn.com/codex-selective-harness/) |
+- Table-enabled MinerU scores higher Boundary Clarity than WigtnOCR-2B (0.713 against 0.610), but its Hit@1 is 42.6 points lower (0.123 against 0.549).
+- Choosing the parser moved Hit@1 by 42.6 points. Fine-tuning had moved it by 4.9.
+- Retrieval-aware DPO training on top of WigtnOCR-2B added about one point of Hit@5, as did a matched edit-distance control. The nine adapters are in [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters).
 
-Other public projects are in [our repositories](https://github.com/wigtn?tab=repositories&type=source).
+Presentation: 25 October 2026, Virtual Session 1. [Paper (PDF)](https://github.com/wigtn/WigtnOCR-RADP/blob/main/output/pdf/EMNLP2026_Industry_384_camera_ready_final.pdf)
 
-## Track record
+## Our Service
 
-### Papers
+Three teams: Solutions builds AI into enterprise systems, Product ships our own, and Research publishes what we find, including what went nowhere, on [WIGTN Tech](https://tech.wigtn.com).
 
-- ![ACL 2026](https://img.shields.io/badge/ACL%202026-5A2E97?style=flat-square) System Demonstrations: *WIGVO: Real-Time Bidirectional Speech Translation over Legacy PSTN Calls via Dual-Session Echo Gating*, pp. 336–344. Demonstrated live at the conference, followed by an invited talk and poster at IWSLT 2026.
-- ![EMNLP 2026](https://img.shields.io/badge/EMNLP%202026-5A2E97?style=flat-square) Industry Track: *Retrieval-Conditional Parsing Score (RCPS): Choosing Document Parsers by Retrieval, Not by Appearance.* [Code](https://github.com/wigtn/WigtnOCR-RADP)
-- ![NeurIPS 2026](https://img.shields.io/badge/NeurIPS%202026-5A2E97?style=flat-square) TAE workshop: *MDI: The Minimum Detectable Improvement of an LLM Judge.* [Code and data](https://github.com/wigtn/mdi-artifact)
+### Solutions: we build it
 
-### Competitions
+AX for enterprises, from consulting to the systems that run it.
 
-- Build with TRAE Seoul (ByteDance): Grand Prize
-- Snowflake AI & Data Hackathon Korea 2026: 2nd place, Tech Track
-- OBA Weekendthon: Top 6
+- SK hynix: Global One ERP (i‑ERP) Platform development, with Braincrew. 2026.10
+- Braincrew: AX project partnership. 2026.10
+- Mind AI: closed beta test partner for MEGA Code. 2026.06
 
-We list only published work. Papers under review are left out until they are accepted.
+### Product: we ship it
+
+Open-source tools we build and use ourselves.
+
+- [WIGSS](https://github.com/wigtn/wigss): drag a component on your dev server and the source file rewrites itself. `npx wigss`
+- [WIGTN Plugin for Claude Code](https://github.com/wigtn/wigtn-plugins): product workflows for Claude Code, with a gate on what leaves the machine.
+- [WIGTN Plugin for Codex](https://github.com/wigtn/wigtn-plugins-codex): requirements, verification and release decisions, reusable in Codex.
+
+### Research: we publish it
+
+Peer-reviewed research on LLMs, their evaluation, and speech.
+
+- ACL 2026 System Demonstrations: WIGVO, real-time speech translation over phone calls. [Paper](https://aclanthology.org/2026.acl-demo.33/) · [Code](https://github.com/wigtn/wigvo)
+- EMNLP 2026 Industry Track: RCPS, choosing document parsers by retrieval. [Paper and code](https://github.com/wigtn/WigtnOCR-RADP)
+- NeurIPS 2026 TAE Workshop: MDI, the minimum detectable improvement of an LLM judge. [Code and data](https://github.com/wigtn/mdi-artifact)
 
 ## Work with us
 
-Bring us a site to build or a workflow that needs AI. You can also read one of our reports and tell us where it is wrong, try one of the models, or open an issue in any repository.
+Have a problem AI hasn't solved for you yet? Tell us where it fails today. We measure it before we build anything, bring the fix into the systems you already run, and say where the fix stops. A report you think is wrong, or an issue on one of our tools, is just as welcome.
 
-Email us at [contact@wigtn.com](mailto:contact@wigtn.com).
+[contact@wigtn.com](mailto:contact@wigtn.com) · [About WIGTN](https://wigtn.com/team)
 
 <div align="center">
 <sub>Everything we learn, we share.</sub>
