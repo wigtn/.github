@@ -31,7 +31,7 @@ WIGTN works in three teams. **Solutions** takes AI transformation (AX) for enter
 
 | Project | What it does | Venue |
 |---|---|---|
-| [RCPS](https://github.com/wigtn/WigtnOCR-RADP) | Chooses document parsers by retrieval on a fixed question–answer probe, and separates parser-side from chunker-side loss | EMNLP 2026 Industry Track |
+| [RCPS](https://github.com/wigtn/WigtnOCR-RADP) | Chooses document parsers by retrieval on a fixed question–answer probe, and separates parser-side from chunker-side loss. It evaluates WigtnOCR-2B as its production parser | EMNLP 2026 Industry Track |
 | [MDI](https://github.com/wigtn/mdi-artifact) | The minimum detectable improvement of an LLM judge. All 97,752 judge calls are logged, and every number in the paper resolves to a file | NeurIPS 2026 TAE Workshop |
 
 ## Developer Tools & Agent Harness
