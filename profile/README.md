@@ -5,7 +5,7 @@
   <img src="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-navy.png" alt="WIGTN" width="320">
 </picture>
 
-**An AI company in Korea. We build AI into enterprise systems, ship open-source tools, and publish research.**
+**An AI company in Korea: we build AI into enterprise systems, ship open-source tools, and publish research.**
 
 [wigtn.com](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
