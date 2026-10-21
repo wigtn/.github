@@ -5,7 +5,7 @@
   <img src="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-navy.png" alt="WIGTN" width="320">
 </picture>
 
-**An independent AI team that builds for clients and publishes in the open.**
+**An AI company in Korea: we build AI into enterprise systems, ship open-source tools, and publish research.**
 
 [wigtn.com](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
@@ -13,16 +13,13 @@
 
 ---
 
-### We learn, build, and share AI in the open.
-
-WIGTN builds web products and AI systems for clients, and publishes what it learns in the open: peer-reviewed papers, released models, and reports that say what they do not show.
+WIGTN works in three teams. **Solutions** takes AI transformation (AX) for enterprises from consulting to the systems that run it. **Product** ships the open-source tools we build and use ourselves. **Research** publishes peer-reviewed work on LLMs, their evaluation, and speech. The repositories below are the code behind that work.
 
 ## Modeling
 
 | Project | What it does | Built with |
 |---|---|---|
 | [WigtnOCR](https://github.com/wigtn/wigtnOCR-v1) | Document parser distilled from a 30B into a 2B vision-language model. The teacher writes Markdown for 4,501 pages, the judge keeps the pages that score 3 or higher, and the student is LoRA fine-tuned on 2,667 of them. [WigtnOCR-2B](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) matches or beats its teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523 | Qwen3-VL-30B-A3B-Thinking (teacher), Qwen3.5-122B-A10B (judge), Qwen3-VL-2B-Instruct (student), ms-swift |
-| [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters) | Nine LoRA adapters for retrieval-aware parser training: auxiliary loss, DPO, distillation and a SimPO control | PEFT LoRA on Qwen3-VL-2B-Instruct and WigtnOCR-2B |
 
 ## Real-Time Speech-to-Speech Translation
 
