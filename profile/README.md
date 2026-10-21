@@ -7,71 +7,63 @@
 
 **An independent AI team that builds for clients and publishes in the open.**
 
-[WIGTN](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [LinkedIn](https://www.linkedin.com/company/wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
+[wigtn.com](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
 </div>
 
 ---
 
-### We learn, build, and share AI in the open.
+This is where our code lives. For who we are and what we offer, see [wigtn.com](https://wigtn.com).
 
-WIGTN builds web products and AI systems for clients, and publishes what it learns in the open: peer-reviewed papers, released models, and reports that say what they do not show.
+## Fine-tuning Qwen3-VL by distillation
 
-## Built on Qwen: from a 2B document parser to an EMNLP 2026 paper
+We built our own document parser by distilling Qwen3-VL-30B into Qwen3-VL-2B.
 
-One line of work in three repositories, read in order. Its training pipeline uses only openly released Qwen models. WIGTN is an independent team, not part of the Qwen project.
+```
+Qwen3-VL-30B-A3B-Thinking  (teacher)  →  writes Markdown for 4,501 document pages
+Qwen3.5-122B-A10B          (judge)    →  keeps the pages that score 3 or higher
+Qwen3-VL-2B-Instruct       (student)  →  LoRA r=8 with ms-swift on 2,667 pages  →  WigtnOCR-2B
+```
 
-### 1. Distill Qwen3-VL into a document parser · [wigtnOCR-v1](https://github.com/wigtn/wigtnOCR-v1)
+- WigtnOCR-2B matches or beats its 30B teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523. [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Training and evaluation code](https://github.com/wigtn/wigtnOCR-v1)
+- Evaluating it led to RCPS, an EMNLP 2026 Industry Track paper that uses WigtnOCR-2B as its production parser. [Paper and code](https://github.com/wigtn/WigtnOCR-RADP) · [Retrieval-aware LoRA adapters](https://github.com/wigtn/RCPS-RADP-Adapters)
 
-Qwen3-VL-30B-A3B-Thinking wrote Markdown for 4,501 pages of Korean government documents and arXiv papers. Qwen3.5-122B-A10B scored that Markdown on five criteria, and Qwen3-VL-2B-Instruct was fine-tuned with LoRA (ms-swift, r=8) on the 2,667 pages kept. The result, [WigtnOCR-2B](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR), matches or beats its 30B teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523. The repository holds the training config, the pipeline scripts and a step-by-step LoRA guide.
+## Real-time AI systems
 
-### 2. A result that did not fit
+| Project | What it does | Built with |
+|---|---|---|
+| [WIGVO](https://github.com/wigtn/wigvo) | Real-time Korean–English speech translation over ordinary phone calls (ACL 2026 System Demonstrations). 555 ms median caller-to-callee latency at USD 0.28/min, 430+ tests | OpenAI Realtime API, Twilio Media Streams, FastAPI, Next.js, Cloud Run |
+| [TimeLens](https://github.com/wigtn/wigtn-timelens) | Museum curator that recognises artifacts through the camera and talks about them in real time | Gemini Live API, Next.js, Cloud Run |
 
-Against five other parsers, the one with the best chunk-boundary score (MinerU, BC 0.735) came fifth of six in retrieval. A score measured on a parser's output alone did not say which parser a retriever would work best with.
+## Evaluation research
 
-### 3. Test it as a paper: RCPS, EMNLP 2026 Industry Track · [WigtnOCR-RADP](https://github.com/wigtn/WigtnOCR-RADP)
+| Project | What it does | Venue |
+|---|---|---|
+| [RCPS](https://github.com/wigtn/WigtnOCR-RADP) | Chooses document parsers by retrieval on a fixed question–answer probe, and separates parser-side from chunker-side loss | EMNLP 2026 Industry Track |
+| [MDI](https://github.com/wigtn/mdi-artifact) | The minimum detectable improvement of an LLM judge. All 97,752 judge calls are logged, and every number in the paper resolves to a file | NeurIPS 2026 TAE Workshop |
 
-The paper takes WigtnOCR-2B as its production parser and ranks parsers by retrieval on a frozen probe of 663 question–answer pairs.
+## Developer tools and agents
 
-- Table-enabled MinerU scores higher Boundary Clarity than WigtnOCR-2B (0.713 against 0.610), but its Hit@1 is 42.6 points lower (0.123 against 0.549).
-- Choosing the parser moved Hit@1 by 42.6 points. Fine-tuning had moved it by 4.9.
-- Retrieval-aware DPO training on top of WigtnOCR-2B added about one point of Hit@5, as did a matched edit-distance control. The nine adapters are in [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters).
+| Project | What it does | Built with |
+|---|---|---|
+| [WIGTN Plugins](https://github.com/wigtn/wigtn-plugins) | Claude Code plugin with 11 agents, from requirements to a verified commit | Claude Code |
+| [WIGTN Plugins for Codex](https://github.com/wigtn/wigtn-plugins-codex) | The same requirements, verification and release workflow for Codex | Codex |
+| [WIGSS](https://github.com/wigtn/wigss) | Drag a component on your running dev server and an AI agent rewrites the source. `npx wigss` | Next.js, WebSocket, OpenAI API |
+| [wigtoken](https://github.com/wigtn/wigtoken) | Self-hosted Claude Code usage aggregator with a live SSE counter and Prometheus metrics | Node.js, SQLite |
+| [SPEAR](https://github.com/wigtn/wigtn-spear) | Attack verification for products and AI agents you are authorized to test: signed authorization, causal HTTP attack checks, replayable evidence | TypeScript |
+| [wigtn-hermes](https://github.com/wigtn/wigtn-hermes-agent) | Installs Hermes Agent on a bare Mac mini and keeps it running: restarts, cleanup, automatic PR review | Python, shell |
 
-Presentation: 25 October 2026, Virtual Session 1. [Paper (PDF)](https://github.com/wigtn/WigtnOCR-RADP/blob/main/output/pdf/EMNLP2026_Industry_384_camera_ready_final.pdf)
+## Hackathons
 
-## Our Service
+| Project | What it does | Built with |
+|---|---|---|
+| [OpenSlot](https://github.com/wigtn/aws-hackathon-dsql) | On-sale infrastructure for high-demand drops, with no oversell across regions (H0: Hack the Zero Stack) | Aurora DSQL, Aurora PostgreSQL with PostGIS and pgvector, Next.js, Vercel |
 
-Three teams: Solutions builds AI into enterprise systems, Product ships our own, and Research publishes what we find, including what went nowhere, on [WIGTN Tech](https://tech.wigtn.com).
+- Build with TRAE Seoul (ByteDance): Grand Prize
+- Snowflake AI & Data Hackathon Korea 2026: 2nd place, Tech Track
+- OBA Weekendthon: Top 6
 
-### Solutions: we build it
-
-AX for enterprises, from consulting to the systems that run it.
-
-- SK hynix: Global One ERP (i‑ERP) Platform development, with Braincrew. 2026.10
-- Braincrew: AX project partnership. 2026.10
-- Mind AI: closed beta test partner for MEGA Code. 2026.06
-
-### Product: we ship it
-
-Open-source tools we build and use ourselves.
-
-- [WIGSS](https://github.com/wigtn/wigss): drag a component on your dev server and the source file rewrites itself. `npx wigss`
-- [WIGTN Plugin for Claude Code](https://github.com/wigtn/wigtn-plugins): product workflows for Claude Code, with a gate on what leaves the machine.
-- [WIGTN Plugin for Codex](https://github.com/wigtn/wigtn-plugins-codex): requirements, verification and release decisions, reusable in Codex.
-
-### Research: we publish it
-
-Peer-reviewed research on LLMs, their evaluation, and speech.
-
-- ACL 2026 System Demonstrations: WIGVO, real-time speech translation over phone calls. [Paper](https://aclanthology.org/2026.acl-demo.33/) · [Code](https://github.com/wigtn/wigvo)
-- EMNLP 2026 Industry Track: RCPS, choosing document parsers by retrieval. [Paper and code](https://github.com/wigtn/WigtnOCR-RADP)
-- NeurIPS 2026 TAE Workshop: MDI, the minimum detectable improvement of an LLM judge. [Code and data](https://github.com/wigtn/mdi-artifact)
-
-## Work with us
-
-Have a problem AI hasn't solved for you yet? Tell us where it fails today. We measure it before we build anything, bring the fix into the systems you already run, and say where the fix stops. A report you think is wrong, or an issue on one of our tools, is just as welcome.
-
-[contact@wigtn.com](mailto:contact@wigtn.com) · [About WIGTN](https://wigtn.com/team)
+Other public projects are in [our repositories](https://github.com/wigtn?tab=repositories&type=source).
 
 <div align="center">
 <sub>Everything we learn, we share.</sub>
