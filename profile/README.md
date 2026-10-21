@@ -19,16 +19,10 @@ WIGTN builds web products and AI systems for clients, and publishes what it lear
 
 ## Modeling
 
-We built our own document parser by distilling Qwen3-VL-30B into Qwen3-VL-2B.
-
-```
-Qwen3-VL-30B-A3B-Thinking  (teacher)  →  writes Markdown for 4,501 document pages
-Qwen3.5-122B-A10B          (judge)    →  keeps the pages that score 3 or higher
-Qwen3-VL-2B-Instruct       (student)  →  LoRA r=8 with ms-swift on 2,667 pages  →  WigtnOCR-2B
-```
-
-- WigtnOCR-2B matches or beats its 30B teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523. [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Training and evaluation code](https://github.com/wigtn/wigtnOCR-v1)
-- Nine LoRA adapters for retrieval-aware parser training on Qwen3-VL-2B and WigtnOCR-2B: auxiliary loss, DPO, distillation and a SimPO control. [Adapters](https://github.com/wigtn/RCPS-RADP-Adapters)
+| Project | What it does | Built with |
+|---|---|---|
+| [WigtnOCR](https://github.com/wigtn/wigtnOCR-v1) | Document parser distilled from a 30B into a 2B vision-language model. The teacher writes Markdown for 4,501 pages, the judge keeps the pages that score 3 or higher, and the student is LoRA fine-tuned on 2,667 of them. [WigtnOCR-2B](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) matches or beats its teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523 | Qwen3-VL-30B-A3B-Thinking (teacher), Qwen3.5-122B-A10B (judge), Qwen3-VL-2B-Instruct (student), ms-swift |
+| [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters) | Nine LoRA adapters for retrieval-aware parser training: auxiliary loss, DPO, distillation and a SimPO control | PEFT LoRA on Qwen3-VL-2B-Instruct and WigtnOCR-2B |
 
 ## Real-Time Speech-to-Speech Translation
 
