@@ -5,7 +5,7 @@
   <img src="https://raw.githubusercontent.com/wigtn/.github/main/profile/assets/wigtn-logo-navy.png" alt="WIGTN" width="320">
 </picture>
 
-**An independent AI team that builds for clients and publishes in the open.**
+**An AI company in Korea. We build AI into enterprise systems, ship open-source tools, and publish research.**
 
 [wigtn.com](https://wigtn.com) · [WIGTN Tech](https://tech.wigtn.com) · [Hugging Face](https://huggingface.co/Wigtn) · [contact@wigtn.com](mailto:contact@wigtn.com)
 
@@ -13,9 +13,7 @@
 
 ---
 
-### We learn, build, and share AI in the open.
-
-WIGTN builds web products and AI systems for clients, and publishes what it learns in the open: peer-reviewed papers, released models, and reports that say what they do not show.
+WIGTN works in three teams. **Solutions** takes AI transformation (AX) for enterprises from consulting to the systems that run it. **Product** ships the open-source tools we build and use ourselves. **Research** publishes peer-reviewed work on LLMs, their evaluation, and speech. The repositories below are the code behind that work.
 
 ## Modeling
 
