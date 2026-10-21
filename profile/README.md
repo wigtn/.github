@@ -23,9 +23,9 @@ WIGTN works in three teams. **Solutions** takes AI transformation (AX) for enter
 
 ## Real-Time Speech-to-Speech Translation
 
-| Project | What it does | Built with |
+| Project | What it does | Venue |
 |---|---|---|
-| [WIGVO](https://github.com/wigtn/wigvo) | Real-time Korean–English speech translation over ordinary phone calls (ACL 2026 System Demonstrations). 555 ms median caller-to-callee latency at USD 0.28/min, 430+ tests | OpenAI Realtime API, Twilio Media Streams, FastAPI, Next.js, Cloud Run |
+| [WIGVO](https://github.com/wigtn/wigvo) | Real-time Korean–English speech translation over ordinary phone calls, built on the OpenAI Realtime API and Twilio Media Streams. 555 ms median caller-to-callee latency at USD 0.28/min, 430+ tests | ACL 2026 System Demonstrations |
 
 ## Evaluation Research
 
