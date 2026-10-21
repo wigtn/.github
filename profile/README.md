@@ -15,18 +15,13 @@
 
 This is where our code lives. For who we are and what we offer, see [wigtn.com](https://wigtn.com).
 
-## Fine-tuning Qwen3-VL by distillation
+## WigtnOCR → RCPS: from a fine-tuned parser to an EMNLP 2026 paper
 
-We built our own document parser by distilling Qwen3-VL-30B into Qwen3-VL-2B.
+One project in three repositories, in the order it happened:
 
-```
-Qwen3-VL-30B-A3B-Thinking  (teacher)  →  writes Markdown for 4,501 document pages
-Qwen3.5-122B-A10B          (judge)    →  keeps the pages that score 3 or higher
-Qwen3-VL-2B-Instruct       (student)  →  LoRA r=8 with ms-swift on 2,667 pages  →  WigtnOCR-2B
-```
-
-- WigtnOCR-2B matches or beats its 30B teacher on 3 of 5 OmniDocBench metrics, with Table TEDS 0.649 against 0.523. [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Training and evaluation code](https://github.com/wigtn/wigtnOCR-v1)
-- Evaluating it led to RCPS, an EMNLP 2026 Industry Track paper that uses WigtnOCR-2B as its production parser. [Paper and code](https://github.com/wigtn/WigtnOCR-RADP) · [Retrieval-aware LoRA adapters](https://github.com/wigtn/RCPS-RADP-Adapters)
+1. **Fine-tune.** [wigtnOCR-v1](https://github.com/wigtn/wigtnOCR-v1) distills a 30B vision-language model into a 2B document parser. Qwen3-VL-30B writes Markdown for 4,501 pages, Qwen3.5-122B filters it, and Qwen3-VL-2B is fine-tuned on the rest with LoRA. The result, [WigtnOCR-2B](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR), matches or beats its teacher on 3 of 5 OmniDocBench metrics.
+2. **Find.** Evaluating it against five other parsers, the one with the best chunk-boundary score ranked fifth of six in retrieval.
+3. **Research.** [WigtnOCR-RADP](https://github.com/wigtn/WigtnOCR-RADP) studies that mismatch with WigtnOCR-2B as the production parser: RCPS, accepted to the EMNLP 2026 Industry Track. [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters) holds the nine LoRA adapters from its parser-training study.
 
 ## Real-time AI systems
 
