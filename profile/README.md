@@ -25,12 +25,22 @@ Websites and web products, assembled from modules we own and keep under test: a 
 
 We map where AI has leverage in your workflows and where it does not. The metric is agreed before anything is built and measured on your own data. After launch we measure again against that baseline, and whatever did not move the number gets cut.
 
+## Research
+
+The first three repositories are one line of work, read in order:
+
+- [wigtnOCR-v1](https://github.com/wigtn/wigtnOCR-v1): distills Qwen3-VL-30B pseudo-labels into WigtnOCR-2B, a LoRA fine-tune of Qwen3-VL-2B that parses Korean government documents into Markdown.
+- [WigtnOCR-RADP](https://github.com/wigtn/WigtnOCR-RADP): the RCPS paper (EMNLP 2026 Industry Track), which starts from WigtnOCR-2B and selects parsers by retrieval instead of by intrinsic scores, with code, the 663-question probe and results.
+- [RCPS-RADP-Adapters](https://github.com/wigtn/RCPS-RADP-Adapters): the nine LoRA adapters evaluated in the paper's parser-training study, with hashes and executed configs.
+- [mdi-artifact](https://github.com/wigtn/mdi-artifact): code and data for MDI, the minimum detectable improvement of an LLM judge (NeurIPS 2026 TAE workshop).
+- [wigvo](https://github.com/wigtn/wigvo): real-time Korean–English speech translation over phone calls (ACL 2026 System Demonstrations).
+
 ## Selected work
 
 | Project | What it is | Evidence | Links |
 | --- | --- | --- | --- |
 | WIGVO | Real-time Korean–English translation over ordinary phone calls. The person on the other end needs no app. | ACL 2026 System Demonstrations. 555 ms median caller-to-callee latency over 814 turns. | [Paper](https://aclanthology.org/2026.acl-demo.33/) · [Report](https://tech.wigtn.com/wigvo/) · [Code](https://github.com/wigtn/wigvo) |
-| WigtnOCR | A 2B LoRA adapter that parses Korean government documents into structured Markdown, distilled from a 30B teacher. | Hit@1 0.739 on KoGovDoc-Bench, first of six parsers on three of four retrieval metrics. | [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Benchmark](https://huggingface.co/datasets/Wigtn/KoGovDoc-Bench) · [Report](https://tech.wigtn.com/wigtnocr/) · [Code](https://github.com/wigtn/wigtnOCR-v1) |
+| WigtnOCR | A 2B model, LoRA-fine-tuned from Qwen3-VL-2B, that parses Korean government documents into structured Markdown, distilled from a 30B teacher. | Hit@1 0.739 on KoGovDoc-Bench, first of six parsers on three of four retrieval metrics. | [Model](https://huggingface.co/Wigtn/Qwen3-VL-2B-WigtnOCR) · [Benchmark](https://huggingface.co/datasets/Wigtn/KoGovDoc-Bench) · [Report](https://tech.wigtn.com/wigtnocr/) · [Code](https://github.com/wigtn/wigtnOCR-v1) |
 | WIGSS | A CLI that wraps your dev server. Drag a component on the live page and the change is written back into the source file behind it. | Published on npm under Apache-2.0. Run with `npx wigss`. | [npm](https://www.npmjs.com/package/wigss) · [Report](https://tech.wigtn.com/wigss/) · [Code](https://github.com/wigtn/wigss) |
 | WIGTN plugins | A plugin set for multi-agent software workflows in Claude Code and Codex. | Redesigned after our own evaluation found the old harness added 151.7% median wall time with no better task outcomes. | [Claude Code](https://github.com/wigtn/wigtn-plugins) · [Codex](https://github.com/wigtn/wigtn-plugins-codex) · [Report](https://tech.wigtn.com/codex-selective-harness/) |
 
